@@ -1,16 +1,6 @@
 import React from 'react';
 
 class Input extends React.Component {
-
-    renderOptions() {
-        let options = [];
-        for (let index = 0; index < this.props.options.length; index++) {
-            let option = this.props.options[index];
-            options.push(<option key={Math.random()}value={option.value}>{option.label}</option>)
-        }
-
-        return options;
-    }
     render () {
         return (
             <div>
