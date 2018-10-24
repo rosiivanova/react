@@ -13,6 +13,7 @@ class Subtitle extends Component {
       return <FieldItem
         key={field.name}
         handleChange={handleChange}
+        state={this.props.state}
         {...field}
       />
     });

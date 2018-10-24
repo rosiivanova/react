@@ -4,6 +4,10 @@ import FieldLabel from "../FieldLabel"
 class Date extends Component {
   render() {
     const {type, name, required, title, handleChange} = this.props;
+    let value = '';
+    if (this.props.state !== undefined) {
+      value = this.props.state[name];
+    }
     return (
       <div className={`field field-type--${type}`}>
         <FieldLabel
@@ -16,6 +20,7 @@ class Date extends Component {
           id={name}
           name={name}
           onChange={handleChange}
+          defaultValue={value}
         />
       </div>
     )

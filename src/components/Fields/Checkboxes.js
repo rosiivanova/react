@@ -17,6 +17,7 @@ class Checkboxes extends Component {
         title={option.label}
         handleChange={handleChange}
         type="checkbox"
+        state={this.props.state}
       />
     });
   }

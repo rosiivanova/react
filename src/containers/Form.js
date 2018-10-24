@@ -7,32 +7,26 @@ import Subtitle from "../components/Subtitle"
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.vremenno = {};
+    this.state = {
+      'results': false,
+      'field_first_name': 'Default value brah',
+      'field_salutation': 1,
+      'field_gift_type[44]': true,
+      'field_gift_type[155]': true,
+    };
   }
 
   handleChange(event) {
     const {name, value} = event.target;
-    // Shano mano tricks brah.
-    this.vremenno[name] = value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   handleSubmit() {
-    let results = [];
-    console.log(this.vremenno)
-    for (const field_name in this.vremenno) {
-      if (this.vremenno.hasOwnProperty(field_name)) {
-        const field_value = this.vremenno[field_name];
-        results.push((
-          <div className="result" key={`result-${field_name}`}>
-            <span className="name">{field_name}</span>
-            <span className="value">{field_value}</span>
-          </div>
-        ));
-      }
-    }
-    this.vremenno = {};
-    this.setState({results});
+    this.setState({
+      results: true
+    });
   }
 
   displayElements() {
@@ -44,9 +38,10 @@ class Form extends Component {
         case 'subtitle':
           return <Subtitle
             handleChange={this.handleChange.bind(this)}
-            key={Math.random()}
+            key={data.value}
             subtitle={data.value}
             fields={data.fields}
+            state={this.state}
           />
         case 'button':
           return <Button key={Math.random()} handleSubmit={this.handleSubmit.bind(this)}>{data.value}</Button>
@@ -56,11 +51,27 @@ class Form extends Component {
     })
   }
 
+  displayResults() {
+    let results = [];
+    for (const field_name in this.state) {
+      if (this.state.hasOwnProperty(field_name)) {
+        const field_value = this.state[field_name];
+        results.push((
+          <div className="result" key={`result-${field_name}`}>
+            <span className="name">{field_name}</span>
+            <span className="value">{field_value}</span>
+          </div>
+        ));
+      }
+    }
+    return results;
+  }
+
   render() {
     return (
       <div className="form">
         {this.displayElements()}
-        {this.state.results}
+        {this.state.results && this.displayResults() }
       </div>
     );
   }
