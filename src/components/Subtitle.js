@@ -4,7 +4,7 @@ import {field_mapping} from "../containers/field_mapping"
 class Subtitle extends Component {
 
   renderFields() {
-    const {fields, handleChange} = this.props
+    const {fields} = this.props
     if (typeof fields === 'undefined') {
       return false;
     }
@@ -12,8 +12,6 @@ class Subtitle extends Component {
       const FieldItem = field_mapping[field.type];
       return <FieldItem
         key={field.name}
-        handleChange={handleChange}
-        state={this.props.state}
         {...field}
       />
     });

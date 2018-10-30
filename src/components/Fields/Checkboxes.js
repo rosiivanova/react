@@ -4,7 +4,7 @@ import Checkbox from "./Checkbox"
 class Checkboxes extends Component {
 
   renderCheckboxes() {
-    const {options, name, required, handleChange} = this.props;
+    const {options, name, required} = this.props;
 
     if (!options) {
       return false;
@@ -15,7 +15,6 @@ class Checkboxes extends Component {
         key={`${name}[${option.value}]`}
         required={required}
         title={option.label}
-        handleChange={handleChange}
         type="checkbox"
         state={this.props.state}
       />

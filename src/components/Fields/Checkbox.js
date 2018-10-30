@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import FieldLabel from "../FieldLabel"
+import connect from "react-redux/es/connect/connect"
+import {checkboxValueChange} from "../../containers/actions"
 
 class Checkbox extends Component {
+  handleChange(e) {
+    this.props.dispatch(checkboxValueChange(e));
+  }
+
   render() {
-    const {type, name, required, title, handleChange} = this.props;
+    const {type, name, required, title} = this.props;
     let value = '';
-    if (this.props.state !== undefined) {
-      value = this.props.state[name];
+    if (typeof this.props.fields[name] !== 'undefined') {
+      value = this.props.fields[name];
     }
     return (
       <div className={`field field-type--${type}`}>
@@ -14,8 +20,8 @@ class Checkbox extends Component {
           type="checkbox"
           id={name}
           name={name}
-          onChange={handleChange}
-          defaultChecked={value}
+          onChange={e => this.handleChange(e)}
+          checked={value}
         />
         <FieldLabel
           for={name}
@@ -27,4 +33,8 @@ class Checkbox extends Component {
   }
 }
 
-export default Checkbox;
+const mapStateToProps = state => {
+  return {fields: state.FormReducer}
+};
+
+export default connect(mapStateToProps)(Checkbox);

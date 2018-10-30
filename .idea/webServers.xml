@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e075cea7-beaa-415a-97db-43b7a597af64" name="WV Stage" url="http://staging-26231.prod.hosting.acquia.com">
+        <fileTransfer host="staging-26231.prod.hosting.acquia.com" port="22" privateKey="C:\Users\pafa7\.ssh\id_rsa_acquia" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
