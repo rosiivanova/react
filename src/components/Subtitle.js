@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {field_mapping} from "../containers/field_mapping"
+import {field_mapping} from "../containers/Form/field_mapping"
 
 class Subtitle extends Component {
 

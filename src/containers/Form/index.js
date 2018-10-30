@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {form_elements} from '../form_elements'
-import Title from "../components/Title";
-import Button from "../components/Button"
-import Subtitle from "../components/Subtitle"
+import {form_elements} from '../../form_elements'
+import Title from "../../components/Title";
+import Button from "../../components/Button"
+import Subtitle from "../../components/Subtitle"
 import { connect } from 'react-redux';
 import { submitForm } from "./actions";
 
-class Form extends Component {
+class Index extends Component {
 
   handleSubmit() {
     this.props.dispatch(submitForm());
@@ -62,4 +62,4 @@ const mapStateToProps = state => ({
   results: state.FormReducer
 });
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps)(Index);

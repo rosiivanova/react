@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import FieldLabel from "../FieldLabel";
 import { connect } from 'react-redux';
-import { fieldValueChange } from "../../containers/actions";
+import { fieldValueChange } from "../../containers/Form/actions";
 
 class Text extends Component {
   handleChange(e) {

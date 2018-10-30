@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import FieldLabel from "../FieldLabel"
 import connect from "react-redux/es/connect/connect"
-import {checkboxValueChange} from "../../containers/actions"
+import {checkboxValueChange} from "../../containers/Form/actions"
 
 class Checkbox extends Component {
   handleChange(e) {
