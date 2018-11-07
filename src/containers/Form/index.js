@@ -14,7 +14,7 @@ class Index extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://react-drupal/json-output').then(res => {
+    axios.get('/json-output').then(res => {
       this.setState({data: res.data});
     });
   }
