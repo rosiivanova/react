@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
-import {form_elements} from '../../form_elements'
 import Title from "../../components/Title";
 import Button from "../../components/Button"
 import Section from "../../components/Section"
 import { connect } from 'react-redux';
 import { submitForm, fieldValueChange } from "./actions";
+import axios from 'axios';
 
 class Index extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentWillMount() {
+    axios.get('http://react-drupal/json-output').then(res => {
+      this.setState({data: res.data});
+    });
+  }
 
   handleSubmit() {
     this.props.dispatch(submitForm());
@@ -17,8 +28,11 @@ class Index extends Component {
   }
 
   displayElements() {
+    if (this.state.data === undefined) {
+      return;
+    }
     // Loop through all elements and render their components.
-    return form_elements.map(data => {
+    return this.state.data.map(data => {
       switch (data.type) {
         case 'title':
           return <Title key={Math.random()}>{data.value}</Title>

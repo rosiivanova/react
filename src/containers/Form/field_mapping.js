@@ -5,12 +5,11 @@ import Textarea from "../../components/Fields/Textarea"
 import Checkbox from "../../components/Fields/Checkbox"
 
 export const field_mapping = {
-  select: Select,
-  text: Input,
-  email: Input,
+  options_select: Select,
+  string_textfield: Input,
+  email_default: Input,
   number: Input,
-  date: Input,
-  checkboxes: Checkboxes,
-  text_long: Textarea,
-  checkbox: Checkbox,
+  options_buttons: Checkboxes,
+  string_textarea: Textarea,
+  boolean_checkbox: Checkbox,
 };
