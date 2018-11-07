@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import {field_mapping} from "../containers/Form/field_mapping"
+import {field_mapping} from "../containers/Form/field_mapping";
 
-class Subtitle extends Component {
+class Section extends Component {
 
   renderFields() {
-    const {fields} = this.props
-    if (typeof fields === 'undefined') {
+    const {fields, handleFieldChange} = this.props;
+
+    if (fields === undefined) {
       return false;
     }
+
     return fields.map(field => {
       const FieldItem = field_mapping[field.type];
       return <FieldItem
         key={field.name}
+        handleFieldChange={handleFieldChange}
         {...field}
       />
     });
@@ -23,8 +26,8 @@ class Subtitle extends Component {
         <h2>{this.props.subtitle}</h2>
         {this.renderFields()}
       </div>
-    )
+    );
   }
 }
 
-export default Subtitle;
+export default Section;

@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 import {form_elements} from '../../form_elements'
 import Title from "../../components/Title";
 import Button from "../../components/Button"
-import Subtitle from "../../components/Subtitle"
+import Section from "../../components/Section"
 import { connect } from 'react-redux';
-import { submitForm } from "./actions";
+import { submitForm, fieldValueChange } from "./actions";
 
 class Index extends Component {
 
   handleSubmit() {
     this.props.dispatch(submitForm());
+  }
+
+  handleFieldChange(fieldName, value) {
+    this.props.dispatch(fieldValueChange(fieldName, value));
   }
 
   displayElements() {
@@ -19,10 +23,11 @@ class Index extends Component {
         case 'title':
           return <Title key={Math.random()}>{data.value}</Title>
         case 'subtitle':
-          return <Subtitle
+          return <Section
             key={data.value}
             subtitle={data.value}
             fields={data.fields}
+            handleFieldChange={this.handleFieldChange.bind(this)}
           />
         case 'button':
           return <Button key={Math.random()} handleSubmit={this.handleSubmit.bind(this)}>{data.value}</Button>
@@ -61,5 +66,6 @@ class Index extends Component {
 const mapStateToProps = state => ({
   results: state.FormReducer
 });
+
 
 export default connect(mapStateToProps)(Index);

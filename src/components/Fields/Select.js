@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import FieldLabel from "../FieldLabel"
-import { connect } from 'react-redux';
-import { fieldValueChange } from "../../containers/Form/actions";
+import FieldLabel from "../FieldLabel";
 
 class Select extends Component {
 
   handleChange(e) {
-    this.props.dispatch(fieldValueChange(e));
+    console.error(e.target.value);
+    this.props.handleFieldChange(e.target.name, e.target.value);
   }
 
   generateOptions() {
@@ -26,10 +25,7 @@ class Select extends Component {
 
   render() {
     const {type, name, required, title} = this.props;
-    let value = '';
-    if (typeof this.props.fields[name] !== 'undefined') {
-      value = this.props.fields[name];
-    }
+
     return (
       <div className={`field field-type--${type}`}>
         <FieldLabel
@@ -41,17 +37,12 @@ class Select extends Component {
           id={name}
           name={name}
           onChange={(e) => this.handleChange(e)}
-          value={value}
         >
           {this.generateOptions()}
         </select>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
-  return {fields: state.FormReducer}
-};
-
-export default connect(mapStateToProps)(Select);
+export default Select;

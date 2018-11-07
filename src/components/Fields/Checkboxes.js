@@ -17,6 +17,7 @@ class Checkboxes extends Component {
         title={option.label}
         type="checkbox"
         state={this.props.state}
+        handleFieldChange={this.props.handleFieldChange.bind(this)}
       />
     });
   }
@@ -27,7 +28,7 @@ class Checkboxes extends Component {
       <div className={`field field-type--${type}`}>
         {this.renderCheckboxes()}
       </div>
-    )
+    );
   }
 }
 

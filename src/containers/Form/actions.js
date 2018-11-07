@@ -1,22 +1,14 @@
 import { FIELD_VALUE_CHANGE, SUBMIT_FORM } from './constants';
 
-export const fieldValueChange = e => ({
+export const fieldValueChange = (name, value) => ({
   type: FIELD_VALUE_CHANGE,
   payload: {
-    name: e.target.name,
-    value: e.target.value,
+    name,
+    value,
   }
 });
 
-export const checkboxValueChange = e => ({
-  type: FIELD_VALUE_CHANGE,
-  payload: {
-    name: e.target.name,
-    value: e.target.checked,
-  }
-});
-
-export const submitForm = e => ({
+export const submitForm = () => ({
   type: SUBMIT_FORM,
   payload: true
 });

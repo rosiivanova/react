@@ -6,7 +6,7 @@ class Button extends Component {
 
     return (
       <button onClick={handleSubmit}>{children}</button>
-    )
+    );
   }
 }
 

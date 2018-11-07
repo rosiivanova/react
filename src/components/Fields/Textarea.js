@@ -1,20 +1,14 @@
 import React, {Component} from 'react';
-import FieldLabel from "../FieldLabel"
-import { connect } from 'react-redux';
-import { fieldValueChange } from "../../containers/Form/actions";
+import FieldLabel from "../FieldLabel";
 
 class Textarea extends Component {
 
   handleChange(e) {
-    this.props.dispatch(fieldValueChange(e));
+    this.props.handleFieldChange(e.target.name, e.target.value);
   }
 
   render() {
     const {type, name, required, title} = this.props;
-    let value = '';
-    if (typeof this.props.fields[name] !== 'undefined') {
-      value = this.props.fields[name];
-    }
     return (
       <div className={`field field-type--${type}`}>
         <FieldLabel
@@ -26,15 +20,10 @@ class Textarea extends Component {
           id={name}
           name={name}
           onChange={e => this.handleChange(e)}
-          defaultValue={value}
         />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
-  return {fields: state.FormReducer}
-};
-
-export default connect(mapStateToProps)(Textarea);
+export default Textarea;
