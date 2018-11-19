@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import FormReducer from "./containers/Form/reducer";
+import SearchReducer from "./containers/Search/reducer"
 
-export default combineReducers({ FormReducer });
+export default combineReducers({ SearchReducer });

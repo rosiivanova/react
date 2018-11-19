@@ -1,2 +1,0 @@
-export const FIELD_VALUE_CHANGE = 'FIELD_VALUE_CHANGE';
-export const SUBMIT_FORM = 'SUBMIT_FORM';
